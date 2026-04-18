@@ -1,13 +1,15 @@
 import pandas as pd
+import requests
 
-def fetch_data():
-    print("Fetching dataset...")
-    
-def fetch():
+DATA_URL = "https://raw.githubusercontent.com/lottery-results/powerball-data/main/sa_powerball.csv"
 
-    print("Downloading latest draw data...")
+def fetch_lottery_data():
 
-    # placeholder for official lottery data API or scrape
-    df = pd.DataFrame()
+    try:
+        df = pd.read_csv(DATA_URL)
 
-    df.to_csv("data/raw/draws.csv", index=False)
+    except Exception:
+        # fallback if internet unavailable
+        df = pd.read_csv("data/raw/powerball_history.csv")
+
+    return df
