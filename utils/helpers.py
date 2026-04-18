@@ -6,6 +6,9 @@ log = get_logger("HELPERS")
 
 DATA_PATH = "data/processed/clean.csv"
 
+def help_load():
+    print("loading helper utilities")
+
 def load_processed_data():
 
     try:
