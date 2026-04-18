@@ -1,0 +1,8 @@
+{
+  "name": "ai-lotto-simulation",
+  "version": "1.0.0",
+  "description": "Dummy file so Render stops npm error",
+  "scripts": {
+    "build": "echo 'No Node build required'"
+  }
+}
