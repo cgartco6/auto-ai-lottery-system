@@ -1,4 +1,6 @@
 import streamlit as st
+st.set_option("browser.gatherUsageStats", False)
+
 import pandas as pd
 import numpy as np
 
