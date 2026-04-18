@@ -1,11 +1,21 @@
 import numpy as np
 
-def monte_carlo(prob, runs=100000):
+def monte_carlo_predictions(freq, simulations=200000):
 
-    results = []
+    numbers = freq.index.values
+    weights = freq.values / freq.values.sum()
 
-    for _ in range(runs):
+    combos = []
 
-        results.append(sorted(np.random.choice(range(1,51),5,replace=False)))
+    for _ in range(simulations):
 
-    return results
+        draw = np.random.choice(
+            numbers,
+            size=5,
+            replace=False,
+            p=weights
+        )
+
+        combos.append(tuple(sorted(draw)))
+
+    return combos
