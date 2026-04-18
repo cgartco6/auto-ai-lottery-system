@@ -1,18 +1,26 @@
 import streamlit as st
-st.set_option("browser.gatherUsageStats", False)
-
 import pandas as pd
-import numpy as np
 
-st.title("AI Simulation Dashboard")
+from pipeline.generate_predictions import generate
 
-data = pd.DataFrame(
-    np.random.randint(1,50,(50,6)),
-    columns=["N1","N2","N3","N4","N5","N6"]
+st.title("AI Lottery Prediction Dashboard")
+
+top13, top6 = generate()
+
+st.subheader("Top 6 Highest Probability")
+
+df6 = pd.DataFrame(
+    [list(x[0]) + [x[1]] for x in top6],
+    columns=["N1","N2","N3","N4","N5","Score"]
 )
 
-st.write("Simulation output")
+st.dataframe(df6)
 
-st.dataframe(data)
+st.subheader("Top 13 Prediction Pool")
 
-st.bar_chart(data)
+df13 = pd.DataFrame(
+    [list(x[0]) + [x[1]] for x in top13],
+    columns=["N1","N2","N3","N4","N5","Score"]
+)
+
+st.dataframe(df13)
