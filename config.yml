@@ -1,0 +1,8 @@
+run:
+  mode: auto
+  daily: true
+
+simulation:
+  runs: 500000
+  top: 13
+  elite: 6
