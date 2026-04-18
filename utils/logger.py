@@ -1,10 +1,9 @@
----
-
-# 📄 3. `utils/logger.py`
-
-```python
 import logging
 import sys
+
+def get_logger(name="APP"):
+    logging.basicConfig(level=logging.INFO)
+    return logging.getLogger(name)
 
 def get_logger(name: str = "APP"):
 
