@@ -3,13 +3,12 @@ pandas
 scikit-learn
 scipy
 matplotlib
-seaborn
+plotly
 streamlit
 pyyaml
 python-dotenv
 joblib
-tqdm
 requests
-plotly
+tqdm
 xgboost
 lightgbm
