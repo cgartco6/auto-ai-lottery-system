@@ -1,5 +1,8 @@
 import pandas as pd
 
+def fetch_data():
+    print("Fetching dataset...")
+    
 def fetch():
 
     print("Downloading latest draw data...")
