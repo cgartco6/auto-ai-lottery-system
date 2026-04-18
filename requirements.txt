@@ -1,7 +1,15 @@
-pandas
 numpy
+pandas
 scikit-learn
+scipy
+matplotlib
+seaborn
 streamlit
-requests
 pyyaml
 python-dotenv
+joblib
+tqdm
+requests
+plotly
+xgboost
+lightgbm
