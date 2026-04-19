@@ -1,20 +1,40 @@
-from pipeline.fetch_data import fetch_lottery_data
-from analytics.frequency_analysis import number_frequency
-from models.monte_carlo_model import monte_carlo_predictions
-from analytics.ranking import rank_combinations
+import pandas as pd
+import itertools
+from collections import Counter
+
+
+DATA_FILE = "data/raw/powerball_history.csv"
 
 
 def generate():
 
-    df = fetch_lottery_data()
+    df = pd.read_csv(DATA_FILE)
 
-    freq = number_frequency(df)
+    numbers = pd.concat([
+        df["n1"],
+        df["n2"],
+        df["n3"],
+        df["n4"],
+        df["n5"]
+    ])
 
-    combos = monte_carlo_predictions(freq)
+    freq = numbers.value_counts()
 
-    ranked = rank_combinations(combos)
+    most_common = list(freq.index[:20])
 
-    top13 = ranked[:13]
-    top6 = ranked[:6]
+    combos = list(itertools.combinations(most_common, 5))
+
+    scores = []
+
+    for combo in combos:
+
+        score = sum(freq[n] for n in combo)
+
+        scores.append((combo, score))
+
+    scores.sort(key=lambda x: x[1], reverse=True)
+
+    top13 = scores[:13]
+    top6 = scores[:6]
 
     return top13, top6
