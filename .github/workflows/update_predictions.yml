@@ -1,0 +1,26 @@
+name: Update Lottery Predictions
+
+on:
+  schedule:
+    - cron: "0 18 * * 2,5"
+  workflow_dispatch:
+
+jobs:
+
+  update:
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+    - uses: actions/checkout@v3
+
+    - uses: actions/setup-python@v4
+      with:
+        python-version: 3.10
+
+    - run: pip install -r requirements.txt
+
+    - run: python automation/update_data.py
+
+    - run: python automation/retraining_pipeline.py
