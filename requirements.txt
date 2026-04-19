@@ -1,10 +1,10 @@
---prefer-binary
 streamlit==1.32.2
 pandas==2.2.2
 numpy==1.26.4
 scikit-learn==1.4.2
 plotly==5.22.0
 requests==2.32.3
+beautifulsoup4==4.12.3
 python-dotenv==1.0.1
 pyyaml==6.0.1
 joblib==1.4.2
