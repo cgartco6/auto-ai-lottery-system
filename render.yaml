@@ -1,6 +1,8 @@
 services:
   - type: web
-    name: ai-simulation-dashboard
+    name: auto-ai-lottery-system
     runtime: python
-    buildCommand: pip install -r requirements.txt
+    buildCommand: |
+      python -m pip install --upgrade pip
+      pip install -r requirements.txt
     startCommand: streamlit run dashboard/streamlit_app.py --server.port $PORT --server.address 0.0.0.0
